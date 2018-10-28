@@ -1,0 +1,222 @@
+<apex:page controller="displyngopportrelateddetailsinhtmlformat" showHeader="false">
+       <apex:form >
+       <script>
+       function showDialog(oppid1){
+        
+           window.showModalDialog('/apex/opportunitylineitempage?id='+oppid1,"width=400%;height=400%;");
+                                         
+           
+       }
+       
+       function newaccount()
+       {
+         window.open('https://ap1.salesforce.com/001/e?retURL=%2F001%2Fo&RecordType=01290000000WK95&ent=Account &nooverride=1');
+       
+       
+       }
+       
+       function newcontact()
+       {
+        window.open('https://ap1.salesforce.com/003/e?retURL=%2F003%2Fo');
+       }
+      
+     
+       
+       
+    </script>
+       
+ <style type="text/css">
+  body .bPageBlock, body .bPageBlock .pbBody, body .bPageBlock .pbBottomButtons
+        {
+             background-color: #E5C130 !important;
+         
+          background-image: url("https://ap1.salesforce.com/resource/1347271108000/opportunityicon");
+                           background-repeat:no-repeat;
+                           background-size: 100%;
+                   }
+           
+       .accountbackground
+       {
+       background-image: url("https://ap1.salesforce.com/resource/1347271108000/opportunityicon");
+          background-repeat:no-repeat;
+           background-size: 110%;
+       
+       }
+       
+       .acc1
+       {
+       background-image: url("https://ap1.salesforce.com/resource/1347282019000/ballons");
+       background-repeat:no-repeat;
+       background-size: 175%;
+       
+       
+       
+       }     
+       
+       
+       
+       
+       
+
+
+
+</style>
+            <body>
+            <apex:pageBlock id="pbs" >
+            
+               <apex:pageBlockButtons Location="bottom">
+                   
+                   <apex:commandLink value="Edit"   action="{!pgedit}"   rendered="{!rendering}" reRender="pbs,pb"/>&nbsp;
+                   <apex:commandLink value="save"   action="{!pgsave}"   rendered="{!!rendering}" reRender="pbs,pb"/>
+                
+                   <apex:commandLink value="New" action="{!pgnew}" rendered="{!rendering}" />&nbsp;
+                  <apex:outputLink onClick="showDialog('{!oppid}')" style="color:red;" target="_New">Opportunity Line Item</apex:outputLink>                  
+               </apex:pageBlockButtons>
+               
+         
+            
+            
+          <apex:pageBlockSection columns="2" id="pb" >
+                
+             <apex:outputField value="{!opp.Name}" rendered="{!rendering}"/>
+             <apex:inputField value="{!opp.Name}" rendered="{!!rendering}"/>
+             <apex:outputField value="{!opp.StageName}" rendered="{!rendering}"/>
+             <apex:inputField value="{!opp.StageName}" rendered="{!!rendering}"/>
+             <apex:outputField value="{!opp.Owner.Name}" rendered="{!rendering}"/>
+             <apex:inputField value="{!opp.Owner.Name}" rendered="{!!rendering}"/>
+             <apex:outputField value="{!opp.CloseDate}" rendered="{!rendering}"/>
+             <apex:inputField value="{!opp.CloseDate}" rendered="{!!rendering}"/>
+             <apex:outputField value="{!opp.Amount}" rendered="{!rendering}"/>
+              <apex:inputField value="{!opp.Amount}" rendered="{!!rendering}"/>
+             </apex:pageBlockSection>
+             
+            
+             </apex:pageBlock>        
+       
+           </body>
+      
+             <apex:pageBlock id="ed">
+              
+                           
+               <table  border="2"  frame="cen"  cellpadding="110" cellspacing="0">
+                   
+                                                              
+                <tr> 
+                   
+                    <td class="acc1"  valign="top">
+                                    
+                         <apex:image id="theImage1" value="{!$Resource.accounticon1}" width="100" height="100" onclick="newaccount()"/>
+                                                                            
+                     <apex:commandLink value="edit"  action="{!pgedit}" rendered="{!rendering}" reRender="ed"/><apex:commandLink value="save" action="{!pgsave1}" rendered="{!!rendering}"  reRender="ed"/>      
+                                                
+                                
+                       <table cellspacing="0" cellpadding="20" bgcolor="#236FBD"> <caption><b>Account Information</b></caption>                    
+                                             
+                        
+                          <tr>
+                         
+                          <td><h1><font color="white" >AccountName</font></h1></td> 
+                         <td><font color="white"><apex:outputField value="{!acc.Name}" rendered="{!rendering}"/></font></td>          
+                                               
+                         <td><font color="white"><apex:inputField value="{!acc.Name}" rendered="{!!rendering}"/></font></td> 
+                         
+                         
+                        </tr>
+                        <tr>
+                          <td><font color="white"><h1> Industry</h1></font></td>
+                         <td><font color="white"><apex:outputField value="{!acc.Industry}" rendered="{!rendering}"/></font></td> 
+                                                  
+                      
+                         <td><font color="white"><apex:inputField value="{!acc.Industry}" rendered="{!!rendering}"/></font></td>
+                        </tr>  
+                       
+                        <tr>
+                          <td><font color="white"><h1> Type</h1></font></td>
+                         <td><font color="white"><apex:outputField value="{!acc.Type}" rendered="{!rendering}"/></font></td>
+                                                   
+                          
+                         <td><font color="white"><apex:inputField value="{!acc.Type}" rendered="{!!rendering}"/></font></td> 
+                        </tr>
+                          
+                       <tr>
+                          <td><font color="white"><h1>Website</h1></font></td>
+                         <td><font color="white"><apex:outputField value="{!acc.website}" rendered="{!rendering}"/></font></td>
+                         
+                         
+                         <td><font color="white"><apex:inputField value="{!acc.website}"  rendered="{!!rendering}"/></font></td>                          
+                        
+                        </tr>
+                           
+                        <tr>
+                          <td><font color="white"><h1>State</h1></font></td>
+                         <td><font color="white"><apex:outputField value="{!acc.BillingState}" rendered="{!rendering}"/></font></td>                          
+                        
+                        
+                         <td><font color="white"><apex:inputField value="{!acc.BillingState}" rendered="{!!rendering}"/></font></td> 
+                        </tr>
+                        
+                        
+                        <tr>
+                          <td><font color="white"><h1>Country</h1></font></td>
+                         <td><font color="white"><apex:outputField value="{!acc.BillingCountry}" rendered="{!rendering}"/></font></td>                          
+                        
+                        
+                         <td><font color="white"><apex:inputField value="{!acc.BillingCountry}" rendered="{!!rendering}"/></font></td>        
+                        </tr>
+                        
+                        
+                          <tr>
+                          <td><font color="white"><h1>Billing Street</h1></font></td>
+                         <td><font color="white"><apex:outputField value="{!acc.BillingStreet}" rendered="{!rendering}"/></font></td>                        
+                      
+                          
+                             
+                         <td><font color="white"><apex:inputField value="{!acc.BillingStreet}" rendered="{!!rendering}"/></font></td>                        
+                                                               
+                             </tr>
+                
+               
+                    <tr>
+                      <td><font color="white"><h1>Phone</h1></font></td>                      
+                     <td><font color="white"><apex:outputField value="{!acc.phone}" rendered="{!rendering}" /></font></td>                       
+                             
+                    
+                     <td><font color="white"><apex:inputField value="{!acc.phone}" rendered="{!!rendering}"/></font></td>                        
+                     </tr> 
+                                             
+                     </table>
+                    
+                    </td>
+                        
+                                      
+                       
+                       
+                               
+                   <td class="accountbackground"  valign="top">
+                               <apex:image id="theImage" value="{!$Resource.contacts}" width="100" height="100" onclick="newcontact()"/>
+                   
+                          <table border="2"  align ="Left" cellspacing="0" cellpadding="30" bgcolor="#E5C130"><caption><b>ContactRole</b></caption>
+                          
+                          
+                             <tr><th><font color="white">Role</font></th><th><font color="white">Contact Name</font></th><th><font color="white">Email</font></th><th><font color="white">Lead Source</font></th></tr>
+                             
+                             
+                                 <apex:repeat value="{!controle}" var="c">
+                                   <tr>                                               
+                                        <td><font color="white"> {!c.Role}</font></td>
+                                        <td><font color="white"><apex:outputLink value="/{!c.contactid}" target="_blank">{!c.contact.name}</apex:outputLink></font></td>
+                                        <td><font color="white">{!c.contact.email}</font></td>
+                                        <td><font color="white">{!c.contact.leadsource}</font></td>
+                                     </tr>
+                                 </apex:repeat>
+                          
+                         </table>              
+                 </td>
+            </tr>
+     </table>
+       
+     </apex:pageBlock>
+      
+       </apex:form>
+               
+   </apex:page>

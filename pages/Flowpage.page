@@ -1,0 +1,6 @@
+<apex:page controller="flowcls">
+  <flow:interview name="Mytestflow" interview="{!myTcFlow}"></flow:interview>
+  <apex:pageBlock rendered="{!BackToAddendum}" title="hi how are you">
+      <apex:detail subject="{!recordid}"/>
+  </apex:pageBlock>
+</apex:page>
